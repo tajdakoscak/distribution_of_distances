@@ -17,3 +17,45 @@ def NarisiGraf(graf):
     x, y = zip(*lists)
     plt.plot(x, y)
     plt.show()
+
+
+def NarisiGrafTest(graf):
+    razdalje = graf.distance_all_pairs()
+    l = razdalje.values()
+    k = []
+    for i in l:
+        for j in i.values():
+            k = k + [j]
+    pojavitve = {}
+    for i in k:
+        if i in pojavitve:
+            pojavitve[i] += 1
+        else:
+            pojavitve[i] = 1
+    lists = sorted(pojavitve.items())
+    x, y = zip(*lists)
+    return(x, y)
+    
+    
+grafi = [G1, G2, G3, G4]
+podatki = []
+for graf in grafi:
+    podatki = podatki + [NarisiGrafTest(graf)]
+    
+    
+x1 = list(podatki[0][0])
+x2 = list(podatki[1][0])
+x3 = list(podatki[2][0])
+x4 = list(podatki[3][0])
+
+y1 = list(podatki[0][1])
+y2 = list(podatki[1][1])
+y3 = list(podatki[2][1])
+y4 = list(podatki[3][1])
+
+
+
+plt.plot(x1, y1)
+plt.plot(x2, y2)
+plt.plot(x3, y3)
+plt.plot(x4, y4)
