@@ -94,3 +94,30 @@ def PorazdelitveRazdalj(grafi):
     plt.plot(x9, y9)
     plt.plot(x10, y10)
     plt.legend(["Graf 1", "Graf 2", "Graf 3", "Graf 4", "Graf 5", "Graf 6", "Graf 7", "Graf 8", "Graf 9", "Graf 10"])
+    
+    
+    def NarisiGrafTest2(graf):
+    razdalje = graf.distance_all_pairs()
+    l = razdalje.values()
+    k = []
+    for i in l:
+        for j in i.values():
+            k = k + [j]
+    pojavitve = {}
+    for i in k:
+        if i in pojavitve:
+            pojavitve[i] += 1
+        else:
+            pojavitve[i] = 1
+    lists = sorted(pojavitve.items())
+    x, y = zip(*lists)
+    plt.plot(x, y)
+    
+    def PorazdelitveRazdalj2(grafi):
+    podatki = []
+    for graf in grafi:
+        NarisiGrafTest2(graf)
+    plt.legend(["Graf 1", "Graf 2", "Graf 3", "Graf 4", "Graf 5", "Graf 6", "Graf 7", "Graf 8", "Graf 9", "Graf 10"])
+    
+    
+    PorazdelitveRazdalj2(grafi)
