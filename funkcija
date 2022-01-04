@@ -1,0 +1,19 @@
+FUL DOBRA FUNKCIJA
+
+def NarisiGraf(graf):
+    razdalje = graf.distance_all_pairs()
+    l = razdalje.values()
+    k = []
+    for i in l:
+        for j in i.values():
+            k = k + [j]
+    pojavitve = {}
+    for i in k:
+        if i in pojavitve:
+            pojavitve[i] += 1
+        else:
+            pojavitve[i] = 1
+    lists = sorted(pojavitve.items())
+    x, y = zip(*lists)
+    plt.plot(x, y)
+    plt.show()
